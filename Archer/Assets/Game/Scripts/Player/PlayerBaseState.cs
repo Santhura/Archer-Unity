@@ -19,7 +19,7 @@ namespace Scripts.Player
             Vector3 cameraForward = new(playerStateMachine.mainCameraTransform.forward.x, 0, playerStateMachine.mainCameraTransform.forward.z);
             Vector3 cameraRight = new(playerStateMachine.mainCameraTransform.right.x, 0, playerStateMachine.mainCameraTransform.right.z);
 
-            Vector3 moveDirection = cameraForward.normalized * playerStateMachine.InputReader.MoveDirection.y + cameraRight.normalized * playerStateMachine.InputReader.MoveDirection.x;
+            Vector3 moveDirection = cameraForward.normalized * playerStateMachine.InputDirection.y + cameraRight.normalized * playerStateMachine.InputDirection.x;
             playerStateMachine.velocity.x = moveDirection.x * playerStateMachine.MovementSpeed;
             playerStateMachine.velocity.z = moveDirection.z * playerStateMachine.MovementSpeed;
         }

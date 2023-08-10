@@ -2,14 +2,16 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
-namespace Scripts.Player
+namespace Scripts.Player.Input
 {
-    public class InputReader : MonoBehaviour, InputController.IGameplayActions
+    [CreateAssetMenu(fileName = "InputReader", menuName = "Game/Input Reader")]
+    public class InputReader : ScriptableObject, InputController.IGameplayActions
     {
-        public Vector2 MoveDirection;
-        public Vector2 Look;
+        public event UnityAction<Vector2> MoveDirectionEvent = delegate { };
+        public event UnityAction<Vector2> Look = delegate { };
 
         public Action OnJumpPerformed;
 
@@ -17,9 +19,11 @@ namespace Scripts.Player
 
         private void OnEnable()
         {
-            if (inputControls == null) return;
-            inputControls = new();
-            inputControls.Gameplay.SetCallbacks(this);
+            if (inputControls == null)
+            {
+                inputControls = new();
+                inputControls.Gameplay.SetCallbacks(this);
+            }
             inputControls.Gameplay.Enable();
         }
 
@@ -38,12 +42,12 @@ namespace Scripts.Player
 
         public void OnLook(InputAction.CallbackContext context)
         {
-            Look = context.ReadValue<Vector2>();
+            Look.Invoke(context.ReadValue<Vector2>());
         }
 
         public void OnMove(InputAction.CallbackContext context)
         {
-            MoveDirection = context.ReadValue<Vector2>();
+            MoveDirectionEvent.Invoke(context.ReadValue<Vector2>());
         }
     }
 }

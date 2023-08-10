@@ -1431,7 +1431,7 @@ GameObject:
   - component: {fileID: 3770015725723610175}
   - component: {fileID: 3226977677779049901}
   - component: {fileID: 8972286824389306735}
-  - component: {fileID: 3908242590455161202}
+  - component: {fileID: 7804278330166205125}
   m_Layer: 0
   m_Name: Player (Erika)
   m_TagString: Untagged
@@ -1507,8 +1507,8 @@ CharacterController:
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0.89, z: 0}
---- !u!114 &3908242590455161202
+  m_Center: {x: 0, y: 0.975, z: 0}
+--- !u!114 &7804278330166205125
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1517,11 +1517,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 4526797536655675186}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a8d069f0a4d9d34d9b0b250a1868d4e, type: 3}
+  m_Script: {fileID: 11500000, guid: 06405efd7a983604b91642c0c8895ff3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveDirection: {x: 0, y: 0}
-  Look: {x: 0, y: 0}
+  currentState: 
+  _inputReader: {fileID: 11400000, guid: 499e9c222c6edfb4d9bcfb96c2513fed, type: 2}
+  velocity: {x: 0, y: 0, z: 0}
 --- !u!1 &4706406251501613281
 GameObject:
   m_ObjectHideFlags: 0

@@ -30,14 +30,15 @@ namespace Scripts.Player.States
 
         public override void Update()
         {
-            if (!playerStateMachine.CharacterController.isGrounded)
-            {
-                playerStateMachine.SwitchState(new PlayerFallState(playerStateMachine));
-            }
+            //if (!playerStateMachine.CharacterController.isGrounded)
+            //{
+            //    playerStateMachine.SwitchState(new PlayerFallState(playerStateMachine));
+            //}
+            Debug.Log(playerStateMachine.InputDirection);
             CalculateMoveDirection();
             FaceMoveDirection();
             Move();
-            playerStateMachine.Animator.SetFloat(_moveSpeedHash, playerStateMachine.InputReader.MoveDirection.sqrMagnitude > 0f ? 1f : 0f, ANIMATION_DAMP_TIME, Time.deltaTime);
+            playerStateMachine.Animator.SetFloat(_moveSpeedHash, playerStateMachine.InputDirection.sqrMagnitude > 0f ? 1f : 0f, ANIMATION_DAMP_TIME, Time.deltaTime);
         }
 
         private void SwitchToJumpState()
