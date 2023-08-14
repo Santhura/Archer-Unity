@@ -26,6 +26,7 @@ namespace Scripts.Player
 
 
         // public variables
+        public CameraController CameraController;
         public Vector3 velocity;
         public float MovementSpeed { get; private set; } = 5f;
         public float JumpForce { get; private set; } = 5f;
@@ -49,15 +50,26 @@ namespace Scripts.Player
             SwitchState(new PlayerMoveState(this));
         }
 
+        protected override void Update()
+        {
+            base.Update();
+        }
+
         // Events
         public void OnMovement(Vector2 movement)
         {
             _inputDirection = movement;
         }
 
+        public void OnAiming(bool isAiming)
+        {
+            SwitchState(new PlayerAimingState(this, isAiming));
+        }
+
         private void OnEnable()
         {
             _inputReader.MoveDirectionEvent += OnMovement;
+            _inputReader.AimEvent += OnAiming;
         }
     }
 }

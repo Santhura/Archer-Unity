@@ -17,7 +17,6 @@ namespace Scripts.Player.States
 
         public override void Enter()
         {
-            playerStateMachine.currentState = "moving";
             playerStateMachine.velocity.y = Physics.gravity.y;
             playerStateMachine.Animator.CrossFadeInFixedTime(_moveBlendTreeHash, CROSS_FADE_DURATION);
             playerStateMachine.InputReader.OnJumpPerformed += SwitchToJumpState;
@@ -36,8 +35,7 @@ namespace Scripts.Player.States
             //}
             CalculateMoveDirection();
             FaceMoveDirection();
-            Move();
-            playerStateMachine.Animator.SetFloat(_moveSpeedHash, playerStateMachine.InputDirection.sqrMagnitude > 0f ? 1f : 0f, ANIMATION_DAMP_TIME, Time.deltaTime);
+            playerStateMachine.Animator.SetFloat(_moveSpeedHash, playerStateMachine.InputDirection.sqrMagnitude, ANIMATION_DAMP_TIME, Time.deltaTime);
         }
 
         private void SwitchToJumpState()

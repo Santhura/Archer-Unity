@@ -12,6 +12,7 @@ namespace Scripts.Player.Input
     {
         public event UnityAction<Vector2> MoveDirectionEvent = delegate { };
         public event UnityAction<Vector2> Look = delegate { };
+        public event UnityAction<bool> AimEvent = delegate { };
 
         public Action OnJumpPerformed;
 
@@ -48,6 +49,14 @@ namespace Scripts.Player.Input
         public void OnMove(InputAction.CallbackContext context)
         {
             MoveDirectionEvent.Invoke(context.ReadValue<Vector2>());
+        }
+
+        public void OnAim(InputAction.CallbackContext context)
+        {
+            if(context.started)
+                AimEvent.Invoke(true);
+            else if(context.canceled)
+                AimEvent.Invoke(false);
         }
     }
 }

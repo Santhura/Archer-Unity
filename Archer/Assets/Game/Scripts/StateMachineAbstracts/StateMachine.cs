@@ -7,7 +7,6 @@ namespace Scripts.StateMachineAbstracts
     public abstract class StateMachine : MonoBehaviour
     {
         private State _currentState;
-        public string currentState;
         public void SwitchState(State state)
         {
             _currentState?.Exit();
@@ -15,10 +14,9 @@ namespace Scripts.StateMachineAbstracts
             _currentState.Enter();
         }
 
-        private void Update()
+        protected virtual void Update()
         {
             _currentState?.Update();
-            Debug.Log("current state: "+ currentState);
         }
     }
 }

@@ -13,7 +13,6 @@ namespace Scripts.Player.States
 
         public override void Enter()
         {
-            playerStateMachine.currentState = "Jumping";
             playerStateMachine.velocity = new(playerStateMachine.velocity.x, playerStateMachine.JumpForce, playerStateMachine.velocity.z);
             playerStateMachine.Animator.CrossFadeInFixedTime(_jumpHas, CROSS_FADE_DURATION);
         }
@@ -30,7 +29,7 @@ namespace Scripts.Player.States
                 playerStateMachine.SwitchState(new PlayerFallState(playerStateMachine));
 
             FaceMoveDirection();
-            Move();
+
         }
     }
 }

@@ -40,9 +40,10 @@ namespace Scripts.Player
             }
         }
 
-        protected void Move()
-        {
-            playerStateMachine.CharacterController.Move(playerStateMachine.velocity * Time.deltaTime);
-        }
+        // this is for moving the character if we want to move the object our selfs, but movement is done now in the animation itself, with locomotion
+        //protected void Move()
+        //{
+        //    playerStateMachine.CharacterController.Move(playerStateMachine.velocity * Time.deltaTime);
+        //}
     }
 }

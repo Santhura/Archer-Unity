@@ -13,7 +13,6 @@ namespace Scripts.Player.States
 
         public override void Enter()
         {
-            playerStateMachine.currentState = "falling";
             playerStateMachine.velocity.y = 0f;
             playerStateMachine.Animator.CrossFadeInFixedTime(_fallHash, CROSS_FADE_DURATION);
         }
@@ -26,7 +25,6 @@ namespace Scripts.Player.States
         public override void Update()
         {
             ApplyGravity();
-            Move();
             if (playerStateMachine.CharacterController.isGrounded)
                 playerStateMachine.SwitchState(new PlayerMoveState(playerStateMachine));
         }
