@@ -34,7 +34,6 @@ namespace Scripts.Player.States
             //{
             //    playerStateMachine.SwitchState(new PlayerFallState(playerStateMachine));
             //}
-            Debug.Log(playerStateMachine.InputDirection);
             CalculateMoveDirection();
             FaceMoveDirection();
             Move();
